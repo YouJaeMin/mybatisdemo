@@ -2,6 +2,7 @@ package part02.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -30,10 +31,35 @@ public class MemDAO {
 
 	public List<MemDTO> allMethod() {
 		return session.selectList("mem.all");
+
 	}
 
-	public int insertMethod(MemDTO dto) {
-		return session.insert("mem.ins", dto);
+	public void insertMethod(MemDTO dto) {
+		session.insert("mem.ins", dto);
+	}
+
+	public void updateMethod(HashMap<String, Object> map) {
+		session.update("mem.upt", map);
+	}
+
+	public void deleteMethod(int num) {
+		session.delete("mem.del", num);
+	}
+
+	public int keyMethod() {
+		return session.selectOne("mem.keyNum");
+	}
+
+	public void multiInsertMethod(List<MemDTO> list) {
+		session.insert("mem.multIns", list);
+	}
+
+	public int multiDeleteMethod(List<Integer> list) {
+		return session.delete("mem.multiDel", list);
+	}
+
+	public int multiDeleteMethod2(Integer list[]) {
+		return session.delete("mem.multiDel2", list);
 	}
 
 }
