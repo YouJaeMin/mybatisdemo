@@ -2,6 +2,7 @@ package part01;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -16,7 +17,7 @@ public class EmployeeDAO {
 
 	public EmployeeDAO() {
 		// 1. 트렌젝션이 설정되어 있는 파일의 경로를 정의 한다.
-		String resource = "configuration.xml";
+		String resource = "config/configuration.xml";
 
 		try {
 			// 2. 설정파일을 로딩하기 위해서 입력스트림과 연결한다.
@@ -40,5 +41,17 @@ public class EmployeeDAO {
 	public List<EmployeeDTO> allMethod() {
 		return session.selectList("emp.all");
 	}
-
+	
+	public int countMethod(){
+		return session.selectOne("emp.cnt");
+	}
+	
+	public List<EmployeeDTO> searchMethod(String name){
+		return session.selectList("emp.search", name);
+	}
+	
+	public List<EmployeeDTO> searchMethod(HashMap<String, Object> map){
+		return session.selectList("emp.part", map);
+	}
+	
 }
