@@ -4,7 +4,8 @@ import java.util.List;
 
 public class DeptDTO {
 	private String department_id, department_name;
-	
+	private List<EmpDTO> emp;
+
 	public DeptDTO() {
 
 	}
@@ -14,8 +15,14 @@ public class DeptDTO {
 		this.department_id = department_id;
 		this.department_name = department_name;
 	}
-	
-	
+
+	public List<EmpDTO> getEmp() {
+		return emp;
+	}
+
+	public void setEmp(List<EmpDTO> emp) {
+		this.emp = emp;
+	}
 
 	public String getDepartment_id() {
 		return department_id;

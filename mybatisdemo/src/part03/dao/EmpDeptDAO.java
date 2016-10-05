@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import part03.dto.DeptDTO;
 import part03.dto.EmpDTO;
 
 public class EmpDeptDAO {
@@ -31,4 +32,11 @@ public class EmpDeptDAO {
 		return session.selectList("empdept.all");
 	}
 
+	public List<EmpDTO> emp_deptMethod(){
+		return session.selectList("empdept.emp_dept");
+	}
+	
+	public List<DeptDTO> dept_empMethod(){
+		return session.selectList("empdept.dept_emp");
+	}
 }
