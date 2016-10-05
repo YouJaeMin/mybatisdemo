@@ -62,4 +62,15 @@ public class MemDAO {
 		return session.delete("mem.multiDel2", list);
 	}
 
+	public List<MemDTO> searchMethod(MemDTO mt){
+		return session.selectList("mem.search", mt);
+	}
+	
+	public void multiUptMethod(MemDTO dto){
+		session.update("mem.multiUpt", dto);
+	}
+	
+	public void locInsMethod(MemDTO dto){
+		session.insert("mem.insData", dto);
+	}
 }

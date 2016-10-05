@@ -30,11 +30,25 @@ public class MemTest {
 		// alist.add(7);
 		// System.out.println("삭제 : " + dao.multiDeleteMethod(alist));
 
-		Integer array[] = new Integer[2];
-		array[0] = 12;
-		array[1] = 11;
-		System.out.println("삭제 : " + dao.multiDeleteMethod2(array));
-		
+		// Integer array[] = new Integer[2];
+		// array[0] = 12;
+		// array[1] = 11;
+		// System.out.println("삭제 : " + dao.multiDeleteMethod2(array));
+
+		MemDTO mt = new MemDTO();
+		// mt.setAge(2);
+		// if
+		// List<MemDTO> list = dao.searchMethod(mt);
+
+		mt.setName("홍기기기");
+		mt.setAge(28);
+		 mt.setLoc("서울");
+		// 멀티업데이트
+		// dao.multiUptMethod(mt);
+
+		// choose 동적 sql
+		dao.locInsMethod(mt);
+
 		List<MemDTO> list = dao.allMethod();
 		for (MemDTO dto : list) {
 			System.out.printf("%d %s %d %s \n", dto.getNum(), dto.getName(), dto.getAge(), dto.getLoc());

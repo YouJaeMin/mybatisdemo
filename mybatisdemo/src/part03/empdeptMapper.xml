@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="empdept">
+	<!-- column 테이블 컬럼 property dto에 있는 변수 -->
+	<resultMap type="part03.dto.EmpDTO" id="empAll" autoMapping="false">
+		<!-- <result column="employee_id" property="employee_id" /> -->
+		<!-- <result column="first_name" property="first_name" /> -->
+		<!-- <result column="job_id" property="job_id" /> -->
+		<!-- <result column="department_id" property="department_id" /> -->
+
+		<!-- 생성자를 이용해서 컬럼의 데이터를 DTO에 저장한다 -->
+		<constructor>
+			<arg column="employee_id" javaType="java.lang.String" />
+			<arg column="first_name" javaType="java.lang.String" />
+			<arg column="job_id" javaType="java.lang.String" />
+			<arg column="department_id" javaType="java.lang.String" />
+		</constructor>
+
+	</resultMap>
+
+	<select id="all" resultMap="empAll">
+		select * from employees
+	</select>
+
+
+	<!-- association : 1:1 관계의 JOIN 명령을 처리하기 위해 사용된다. -->
+	<resultMap type="part03.dto.EmpDTO" id="emp_dept_result">
+		<result column="employee_id" property="employee_id" />
+		<result column="first_name" property="first_name" />
+		<result column="job_id" property="job_id" />
+		<result column="department_id" property="department_id" />
+		<association property="dept" javaType="part03.dto.DeptDTO">
+			<result column="department_name" property="department_name"/>
+		</association>
+	</resultMap>
+
+	<select id="emp_dept" resultMap="emp_dept_result">
+		select e.employee_id,
+		e.first_name, e.job_id,
+		e.department_id, d.department_name
+		from
+		employees e, departments d
+		where e.department_id=d.department_id
+	</select>
+
+</mapper>
