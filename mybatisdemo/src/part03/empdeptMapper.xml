@@ -26,7 +26,7 @@
 	</select>
 
 
-	<!-- association : 1:1 관계의 JOIN 명령을 처리하기 위해 사용된다. -->
+	<!-- association : 1:1 관계의 JOIN 명령을 처리하기 위해 사용된다.. -->
 	<resultMap type="part03.dto.EmpDTO" id="emp_dept_result">
 		<result column="employee_id" property="employee_id" />
 		<result column="first_name" property="first_name" />
