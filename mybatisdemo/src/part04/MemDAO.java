@@ -1,4 +1,4 @@
-package part03.dao;
+package part04;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -9,13 +9,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import part03.dto.DeptDTO;
-import part03.dto.EmpDTO;
-
-public class EmpDeptDAO {
+public class MemDAO {
 	SqlSession session;
 
-	public EmpDeptDAO() {
+	public MemDAO() {
 		String resource = "config/configuration.xml";
 		try {
 			Reader reader = Resources.getResourceAsReader(resource);
@@ -26,22 +23,15 @@ public class EmpDeptDAO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
-	public List<EmpDTO> allMethod() {
-		return session.selectList("empdept.all");
+	public List<MemDTO> listMethod() {
+		return session.selectList("member.all");
 	}
 
-	public List<EmpDTO> emp_deptMethod(){
-		return session.selectList("empdept.emp_dept");
+	public void deleteMethod(int num[]) {
+		session.delete("member.multiDel", num);
 	}
-	
-	public List<DeptDTO> dept_empMethod(){
-		return session.selectList("empdept.dept_emp");
-	}
-	
-	public List<EmpDTO> partMethod(){
-		return session.selectList("empdept.dnator");
-	}
-	
+
 }
