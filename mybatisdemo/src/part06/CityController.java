@@ -18,7 +18,7 @@ public class CityController extends HttpServlet {
 		ListDAO dao = new ListDAO();
 //
 		req.setAttribute("aList", dao.listMethod());
-
+		
 		RequestDispatcher dis = req.getRequestDispatcher("/view/city.jsp");
 		dis.forward(req, resp);
 

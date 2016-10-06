@@ -26,7 +26,7 @@ public class ListDAO {
 
 	}
 
-	public List<EmpDTO> listMethod() {
+	public List<LocDTO> listMethod() {
 		return session.selectList("city.list");
 	}
 

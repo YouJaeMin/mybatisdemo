@@ -13,7 +13,7 @@
 		</association>
 		<collection property="empList" javaType="java.util.List"
 			ofType="part06.EmpDTO">
-			<result column="employee_id" property="employee_id" />
+			<result column="first_name" property="first_name" />
 			<result column="salary" property="salary" />
 		</collection>
 	</resultMap>

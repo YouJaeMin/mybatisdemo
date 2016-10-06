@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="part06.LocDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -41,13 +43,55 @@
 				}
 			});
 		}); */
+		
+		/* 
+		 * 
+		 * 같은 값이 있는 열을 병합함
+		 * 
+		 * 사용법 : $('#테이블 ID').rowspan(0);
+		 * 
+		 */     
+		$.fn.rowspan = function(colIdx, isStats) {       
+			return this.each(function(){      
+				var that;
+				$('tr', this).each(function(row) {
+					$('td:eq('+colIdx+')', this).filter(':visible').each(function(col) {
+						
+						if ($(this).html() == $(that).html()
+							&& (!isStats 
+									|| isStats && $(this).prev().html() == $(that).prev().html()
+									)
+							) {            
+							rowspan = $(that).attr("rowspan") || 1;
+							rowspan = Number(rowspan)+1;
+
+							$(that).attr("rowspan",rowspan);
+							
+							// do your action for the colspan cell here            
+							$(this).hide();
+							
+							//$(this).remove(); 
+							// do your action for the old cell here
+							
+						} else {            
+							that = this;         
+						}          
+						
+						// set the that if not already set
+						that = (that == null) ? this : that;      
+					});     
+				});    
+			});  
+		}; 
+		
+		$('#tt').rowspan(1);
+		$('#tt').rowspan(2);
 	});
 </script>
 </head>
 <body>
-
 	<form action="cityList" name="frm" method="get">
-		<table>
+		<table id="tt">
 			<tr>
 				<th><input type="button" id="all" value="전체" /> <input
 					type="button" id="del" value="삭제" /></th>
