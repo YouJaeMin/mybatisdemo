@@ -23,5 +23,7 @@
 		<mapper resource="part02/memMapper.xml" />
 		<mapper resource="part03/empdeptMapper.xml" />
 		<mapper resource="part04/memberMapper.xml" />
+		<mapper resource="part05/listMapper.xml" />
+		<mapper resource="part06/cityMapper.xml" />
 	</mappers>
 </configuration>

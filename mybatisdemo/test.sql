@@ -21,10 +21,17 @@ insert into mem values(mem_num_seq.nextval, '홍길동7',25,'서울3');
 
 		
 		
+select e.employee_id, e.first_name, d.department_name, l.street_address
+from employees e, departments d, locations l
+where e.department_id = d.department_id
+and d.location_id = l.location_id
 		
 		
-		
-		
+select l.city, d.department_name, e.first_name, e.salary
+from locations l, departments d, employees e
+where l.location_id = d.location_id
+and d.department_id = e.department_id
+order by l.city
 		
 		
 		
