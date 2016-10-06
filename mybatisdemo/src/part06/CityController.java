@@ -16,7 +16,7 @@ public class CityController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		ListDAO dao = new ListDAO();
-
+//
 		req.setAttribute("aList", dao.listMethod());
 
 		RequestDispatcher dis = req.getRequestDispatcher("/view/city.jsp");
