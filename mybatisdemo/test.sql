@@ -33,5 +33,5 @@ where l.location_id = d.location_id
 and d.department_id = e.department_id
 order by l.city
 		
-		
+		d
 		
